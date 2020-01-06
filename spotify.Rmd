@@ -37,7 +37,8 @@ head(top50, n=10)
 ```{r top50}
 summary(top50)
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 
 ```{r popularity_plot}
 # Plotting by popularity
@@ -49,7 +50,8 @@ ggplot(top50,aes(x=top50$Track.Name,y=top50$Popularity)) +
   geom_bar(stat="identity") +
   theme(axis.text.x=element_text(angle=90,hjust=1))
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 ### What About the Music Genre?
 
 ```{r include=FALSE}
@@ -60,7 +62,8 @@ genre_count<-genre_count %>% group_by(Genre) %>% summarise(count=n()) %>% arrang
 
 head(genre_count)
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 ```{r genre_plot}
 # Plotting Genre Count
 genre_count$Genre<-factor(genre_count$Genre,levels=genre_count$Genre[order(genre_count$count)])
@@ -71,20 +74,23 @@ ggplot(genre_count,aes(x=genre_count$Genre,y=genre_count$count)) +
   geom_bar(stat="identity") +
   theme(axis.text.x=element_text(angle=90,hjust=1))
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 ### Artists by Number of Songs in the Top 50 List
 ```{r include=FALSE}
 artist_count<-top50 %>% select(Artist.Name,Track.Name)
 artist_count<-artist_count %>% group_by(Artist.Name) %>% summarise(count=n()) %>% arrange(desc(count))
 head(artist_count)
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 ```{r artist_plot }
 
 knitr::kable(artist_count, col.names = c("Artist","Count")) %>% kable_styling() %>% scroll_box(width="50%",height="200px")
 
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 ### Artists by Popularity of Songs
 
 ```{r artist_pop}
@@ -94,7 +100,8 @@ artist_pop <-artist_pop %>% group_by(Artist.Name) %>% summarise(average_pop=mean
 knitr::kable(artist_pop, col.names = c("Artist","Average Popularity")) %>% kable_styling() %>% scroll_box(width="50%",height="200px")
 
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 ### Artists' Energy
 ```{r artist_char}
 artist_energy<-top50 %>% select(Artist.Name,Energy)
@@ -103,7 +110,8 @@ artist_energy<-artist_energy %>% group_by(Artist.Name) %>% summarise(average_ene
 knitr::kable(artist_energy, col.names = c("Artist","Average Energy")) %>% kable_styling() %>% scroll_box(width="50%",height="200px")
 
 ```
-
+<div style="margin-bottom:50px;">
+</div>
 ### Which Are the Factors Contributing to Popularity?
 ```{r include=FALSE}
 kmeans.data<-top50 %>% select(Beats.Per.Minute,Energy,Loudness..dB..,Valence.,Length.,Acousticness..,Speechiness.,Liveness,Danceability)
@@ -111,7 +119,8 @@ kmeans(kmeans.data,centers=18,nstart=20)
 
 ```
 
-
+<div style="margin-bottom:50px;">
+</div>
 
 
 ```{r include=FALSE}
