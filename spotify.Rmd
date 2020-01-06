@@ -1,6 +1,15 @@
 ---
+layout: post
+title: "This is a test post for my Spotify project"
+date: 07-01-2020
+tags: test spotify
+---
+
+---
 title: "Spotify"
-output: github_document
+output: 
+  md_document:
+    variant: html
 ---
 
 ```{r setup, include=FALSE}
