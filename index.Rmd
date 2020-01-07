@@ -1,0 +1,135 @@
+---
+title: 
+output: 
+  md_document:
+    variant: html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+
+#Load the libraries
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+
+setwd("C:/Users/lena/Desktop/Rspace/spot/spot")
+```
+
+
+## Top 50 Tracks in 2019 
+
+An analysis of the top 50 tracks on Spotify with R. **What a way to say goodbye to 2019!** You can find the dataset on Kaggle,  <https://www.kaggle.com/leonardopena/top50spotify2019>.
+
+
+### Let's take a look at the dataset: ### 
+```{r include=FALSE}
+top50<-read.csv("top50.csv", sep=",",encoding = "ISO-8859-1")
+head(top50, n=10)
+```
+
+
+```{r top50}
+summary(top50)
+```
+<div style="margin-bottom:50px;">
+</div>
+
+```{r popularity_plot}
+# Plotting by popularity
+top50$Track.Name<-factor(top50$Track.Name,levels=top50$Track.Name[order(top50$Popularity)])
+
+ggplot(top50,aes(y=top50$Track.Name,x=top50$Popularity)) + 
+  xlab("Popularity") + 
+  ylab("Track name") + 
+  geom_bar(stat="identity") +
+  theme(axis.text.x=element_text(angle=90,hjust=1))
+```
+<div style="margin-bottom:50px;">
+</div>
+### What About the Music Genre?
+
+```{r include=FALSE}
+# Genre
+
+genre_count<-top50 %>% select(Track.Name,Genre)
+genre_count<-genre_count %>% group_by(Genre) %>% summarise(count=n()) %>% arrange(desc(count))
+
+head(genre_count)
+```
+<div style="margin-bottom:50px;">
+</div>
+```{r genre_plot}
+# Plotting Genre Count
+
+genre_count$Genre<-factor(genre_count$Genre,levels=genre_count$Genre[order(genre_count$count)])
+
+ggplot(genre_count,aes(x=genre_count$Genre,y=genre_count$count)) + 
+  xlab("Genre") + 
+  ylab("Count") + 
+  geom_bar(stat="identity") +
+  theme(axis.text.x=element_text(angle=90,hjust=1))
+```
+<div style="margin-bottom:50px;">
+</div>
+### Artists by Number of Songs in the Top 50 List
+
+```{r include=FALSE}
+artist_count<-top50 %>% select(Artist.Name,Track.Name)
+artist_count<-artist_count %>% group_by(Artist.Name) %>% summarise(count=n()) %>% arrange(desc(count))
+head(artist_count)
+```
+
+```{r artist_plot }
+
+knitr::kable(artist_count, col.names = c("Artist","Count")) %>% kable_styling() %>% scroll_box(width="50%",height="200px")
+
+```
+<div style="margin-bottom:50px;">
+</div>
+### Artists by Popularity of Songs
+
+```{r artist_pop}
+artist_pop <-top50 %>% select(Artist.Name,Popularity)
+artist_pop <-artist_pop %>% group_by(Artist.Name) %>% summarise(average_pop=mean(Popularity)) %>% arrange(desc(average_pop))
+
+knitr::kable(artist_pop, col.names = c("Artist","Average Popularity")) %>% kable_styling() %>% scroll_box(width="50%",height="200px")
+
+```
+<div style="margin-bottom:50px;">
+</div>
+### Artists' Energy
+
+```{r artist_char}
+artist_energy<-top50 %>% select(Artist.Name,Energy)
+artist_energy<-artist_energy %>% group_by(Artist.Name) %>% summarise(average_energy=mean(Energy)) %>% arrange(desc(average_energy))
+
+knitr::kable(artist_energy, col.names = c("Artist","Average Energy")) %>% kable_styling() %>% scroll_box(width="50%",height="200px")
+
+```
+<div style="margin-bottom:50px;">
+</div>
+### Which Are the Factors Contributing to Popularity?
+#### (to be continued)
+
+```{r include=FALSE}
+kmeans.data<-top50 %>% select(Beats.Per.Minute,Energy,Loudness..dB..,Valence.,Length.,Acousticness..,Speechiness.,Liveness,Danceability)
+kmeans(kmeans.data,centers=18,nstart=20)
+
+```
+
+<div style="margin-bottom:50px;">
+</div>
+
+
+```{r include=FALSE}
+top50.cor<- top50 %>% select(Popularity,Beats.Per.Minute,Energy,Loudness..dB..,Valence.,Length.,Acousticness..,Speechiness.,Liveness,Danceability)
+
+cor(top50.cor)
+
+```
