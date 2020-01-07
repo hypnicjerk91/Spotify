@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+=======
+
+>>>>>>> 8192924f16e57c157c88424407b5720b92e65cb5
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
+<<<<<<< HEAD
   <title>index.utf8</title>
+=======
+  <title>Spotify</title>
+>>>>>>> 8192924f16e57c157c88424407b5720b92e65cb5
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -76,6 +84,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+<div id="header">
+<h1 class="title">Spotify</h1>
+</div>
+>>>>>>> 8192924f16e57c157c88424407b5720b92e65cb5
 <h2 id="top-50-tracks-in-2019">Top 50 Tracks in 2019</h2>
 <p>An analysis of the top 50 tracks on Spotify with R. <strong>What a way to say goodbye to 2019!</strong> You can find the dataset on Kaggle, <a href="https://www.kaggle.com/leonardopena/top50spotify2019" class="uri">https://www.kaggle.com/leonardopena/top50spotify2019</a>.</p>
 <h3 id="lets-take-a-look-at-the-dataset">Let’s take a look at the dataset:</h3>
@@ -123,7 +137,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb3-6" title="6"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Track name&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb3-7" title="7"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb3-8" title="8"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">hjust=</span><span class="dv">1</span>))</a></code></pre></div>
+<<<<<<< HEAD
 <img src="index_files/figure-html/popularity_plot-1.png" /><!-- -->
+=======
+<img src="spotify_files/figure-html/popularity_plot-1.png" /><!-- -->
+>>>>>>> 8192924f16e57c157c88424407b5720b92e65cb5
 <div style="margin-bottom:50px;">
 
 </div>
@@ -140,7 +158,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb4-7" title="7"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-8" title="8"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">hjust=</span><span class="dv">1</span>))</a></code></pre></div>
+<<<<<<< HEAD
 <img src="index_files/figure-html/genre_plot-1.png" /><!-- -->
+=======
+<img src="spotify_files/figure-html/genre_plot-1.png" /><!-- -->
+>>>>>>> 8192924f16e57c157c88424407b5720b92e65cb5
 <div style="margin-bottom:50px;">
 
 </div>
@@ -1131,4 +1153,7 @@ Y2K
 
 </div>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+>>>>>>> 8192924f16e57c157c88424407b5720b92e65cb5
