@@ -44,9 +44,9 @@ summary(top50)
 # Plotting by popularity
 top50$Track.Name<-factor(top50$Track.Name,levels=top50$Track.Name[order(top50$Popularity)])
 
-ggplot(top50,aes(y=top50$Track.Name,x=top50$Popularity)) + 
-  xlab("Popularity") + 
-  ylab("Track name") + 
+ggplot(top50,aes(x=top50$Track.Name,y=top50$Popularity)) + 
+  xlab("Track name") + 
+  ylab("Popularity") + 
   geom_bar(stat="identity") +
   theme(axis.text.x=element_text(angle=90,hjust=1))
 ```
